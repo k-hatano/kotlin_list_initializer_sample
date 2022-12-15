@@ -1,21 +1,20 @@
-fun <T> List(vararg items: T): kotlin.collections.List<T> = items.toList()
-fun <T> LIST(vararg items: T): kotlin.collections.List<T> = items.toList()
-fun <T> L(vararg items: T): kotlin.collections.List<T> = items.toList()
+fun <T> List(vararg items: T) = items.toList()
+fun <T> LIST(vararg items: T) = items.toList()
+fun <T> L(vararg items: T) = items.toList()
 
-class List<T> {
-    companion object {
-		operator fun <T> get(vararg items: T): kotlin.collections.List<T> = items.toList()
-		fun <T> of(vararg items: T): kotlin.collections.List<T> = items.toList()
-    }
+object List {
+    operator fun <T> get(vararg items: T) = items.toList()
+    fun <T> of(vararg items: T) = items.toList()
 }
 
-typealias LIST<T> = List<T>
-typealias L<T> = List<T>
-typealias _L<T> = List<T>
-typealias `@`<T> = List<T>
-typealias `$`<T> = List<T>
-typealias `_`<T> = List<T>
-typealias `[]`<T> = List<T>
+typealias LIST = List
+typealias L = List
+typealias _L = List
+typealias `_` = List
+typealias `@` = List
+typealias `$` = List
+typealias `[]` = List
+typealias リスト = List
 
 fun main() {
     val a = listOf(1, 2, 3, listOf(4, 5, 6))
@@ -45,15 +44,18 @@ fun main() {
     val i = _L[1, 2, 3, _L[4, 5, 6]]
     println(i) // [1, 2, 3, [4, 5, 6]]
     
+    val v = _[1, 2, 3, _[4, 5, 6]]
+    println(v) // [1, 2, 3, [4, 5, 6]]
+    
     val w = `@`[1, 2, 3, `@`[4, 5, 6]]
     println(w) // [1, 2, 3, [4, 5, 6]]
     
     val x = `$`[1, 2, 3, `$`[4, 5, 6]]
     println(x) // [1, 2, 3, [4, 5, 6]]
     
-    val y = `_`[1, 2, 3, `_`[4, 5, 6]]
+    val y = `[]`[1, 2, 3, `[]`[4, 5, 6]]
     println(y) // [1, 2, 3, [4, 5, 6]]
     
-    val z = `[]`[1, 2, 3, `[]`[4, 5, 6]]
+    val z = リスト[1, 2, 3, リスト[4, 5, 6]]
     println(z) // [1, 2, 3, [4, 5, 6]]
 }
