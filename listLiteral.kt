@@ -15,6 +15,7 @@ typealias `@` = List
 typealias `$` = List
 typealias `[]` = List
 typealias リスト = List
+typealias 串列 = List
 
 fun main() {
     val a = listOf(1, 2, 3, listOf(4, 5, 6))
@@ -58,4 +59,7 @@ fun main() {
     
     val z = リスト[1, 2, 3, リスト[4, 5, 6]]
     println(z) // [1, 2, 3, [4, 5, 6]]
+    
+    val u = 串列[1, 2, 3, 串列[4, 5, 6]]
+    println(u) // [1, 2, 3, [4, 5, 6]]
 }

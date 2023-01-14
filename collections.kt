@@ -1,5 +1,12 @@
 
 fun <T> `_`(vararg items: T) = items as kotlin.Array<T>
+fun <T> Array(vararg items: T) = items as kotlin.Array<T>
+fun <T> List(vararg items: T) = items.toList()
+fun <T> MutableList(vararg items: T) = items.toMutableList()
+fun <K, V> Map(vararg items: Pair<K, V>) = items.toMap()
+fun <K, V> MutableMap(vararg items: Pair<K, V>) = items.toMap().toMutableMap()
+fun <T> Set(vararg items: T) = items.toSet()
+fun <T> MutableSet(vararg items: T) = items.toMutableSet()
 
 object Array {
     operator fun <T> get(vararg items: T) = items as kotlin.Array<T>
@@ -57,39 +64,39 @@ typealias `_` = List
 
 fun main() {
     // array
-	val a0 = arrayOf(1, 2, 3, 4)
+    val a0 = arrayOf(1, 2, 3, 4)
     a0[3] = 0
-	println(a0.contentToString()) // [1, 2, 3, 0]
+    println(a0.contentToString()) // [1, 2, 3, 0]
 
-	val a1 = Array.of(1, 2, 3, 4)
+    val a1 = Array.of(1, 2, 3, 4)
     a1[3] = 0
     println(a1.contentToString()) // [1, 2, 3, 0]
 
-	val a2 = ARRAY[1, 2, 3, 4]
+    val a2 = ARRAY[1, 2, 3, 4]
     a2[3] = 0
-	println(a2.contentToString()) // [1, 2, 3, 0]
+    println(a2.contentToString()) // [1, 2, 3, 0]
 
-	val a3 = A[1, 2, 3, 4]
+    val a3 = A[1, 2, 3, 4]
     a3[3] = 0
-	println(a3.contentToString()) // [1, 2, 3, 0]
+    println(a3.contentToString()) // [1, 2, 3, 0]
 
     val a4 = `_`(1, 2, 3, 4)
     a4[3] = 0
     println(a4.contentToString()) // [1, 2, 3, 0]
 
 
-	// list
-	val l0 = listOf(1, 2, 3, 4, listOf(5, 6, 7, 8))
-	println(l0) // [1, 2, 3, 4, [5, 6, 7, 8]]
+    // list
+    val l0 = listOf(1, 2, 3, 4, listOf(5, 6, 7, 8))
+    println(l0) // [1, 2, 3, 4, [5, 6, 7, 8]]
 
-	val l1 = List.of(1, 2, 3, 4, List.of(5, 6, 7, 8))
-	println(l1) // [1, 2, 3, 4, [5, 6, 7, 8]]
+    val l1 = List.of(1, 2, 3, 4, List.of(5, 6, 7, 8))
+    println(l1) // [1, 2, 3, 4, [5, 6, 7, 8]]
 
-	val l2 = LIST[1, 2, 3, 4, LIST[5, 6, 7, 8]]
-	println(l2) // [1, 2, 3, 4, [5, 6, 7, 8]]
+    val l2 = LIST[1, 2, 3, 4, LIST[5, 6, 7, 8]]
+    println(l2) // [1, 2, 3, 4, [5, 6, 7, 8]]
 
-	val l3 = L[1, 2, 3, 4, L[5, 6, 7, 8]]
-	println(l3) // [1, 2, 3, 4, [5, 6, 7, 8]]
+    val l3 = L[1, 2, 3, 4, L[5, 6, 7, 8]]
+    println(l3) // [1, 2, 3, 4, [5, 6, 7, 8]]
 
     val l4 = _[1, 2, 3, 4, _[5, 6, 7, 8]]
     println(l4) // [1, 2, 3, 4, [5, 6, 7, 8]]
@@ -98,7 +105,7 @@ fun main() {
     // mutable list
     val ml0 = mutableListOf(1, 2, 3, 4)
     ml0.add(5)
-	println(ml0) // [1, 2, 3, 4, 5]
+    println(ml0) // [1, 2, 3, 4, 5]
     
     val ml1 = MutableList.of(1, 2, 3, 4)
     ml1.add(5)
@@ -118,17 +125,17 @@ fun main() {
     
 
     // map
-	val m0 = mapOf("one" to 1, "two" to 2, "more" to mapOf("three" to 3, "four" to 4))
-	println(m0) // {one=1, two=2, more={three=3, four=4}}
+    val m0 = mapOf("one" to 1, "two" to 2, "more" to mapOf("three" to 3, "four" to 4))
+    println(m0) // {one=1, two=2, more={three=3, four=4}}
 
-	val m1 = Map.of("one" to 1, "two" to 2, "more" to Map.of("three" to 3, "four" to 4))
-	println(m1) // {one=1, two=2, more={three=3, four=4}}
+    val m1 = Map.of("one" to 1, "two" to 2, "more" to Map.of("three" to 3, "four" to 4))
+    println(m1) // {one=1, two=2, more={three=3, four=4}}
 
-	val m2 = MAP["one" to 1, "two" to 2, "more" to MAP["three" to 3, "four" to 4]]
-	println(m2) // {one=1, two=2, more={three=3, four=4}}
+    val m2 = MAP["one" to 1, "two" to 2, "more" to MAP["three" to 3, "four" to 4]]
+    println(m2) // {one=1, two=2, more={three=3, four=4}}
 
-	val m3 = M["one" to 1, "two" to 2, "more" to M["three" to 3, "four" to 4]]
-	println(m3) // {one=1, two=2, more={three=3, four=4}}
+    val m3 = M["one" to 1, "two" to 2, "more" to M["three" to 3, "four" to 4]]
+    println(m3) // {one=1, two=2, more={three=3, four=4}}
     
     
     // mutable map
